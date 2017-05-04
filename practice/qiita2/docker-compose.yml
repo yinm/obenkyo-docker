@@ -1,0 +1,17 @@
+version: '2'
+services:
+  app:
+    build: ./phpfpm
+    container_name: "php"
+    volumes:
+      - ./application:/var/www/html
+
+  web:
+    build: ./nginx
+    container_name: "nginx"
+    ports:
+      - "8080:80"
+    links:
+      - "app:php"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d:ro
