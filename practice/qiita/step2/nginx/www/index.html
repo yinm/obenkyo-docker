@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <title>Docker Sample 2</title>
+</head>
+<body>
+<h1>Docker Sample 2</h1>
+<ul id="list">
+</ul>
+
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<script>
+  const $list = $('#list');
+  $.ajax({
+    url: '/api',
+    success: result => {
+      $list.append(result.map(item => `<li>${item.text}</li>`));
+    }
+  });
+</script>
+</body>
+</html>

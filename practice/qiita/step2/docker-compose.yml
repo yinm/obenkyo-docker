@@ -1,0 +1,15 @@
+version: '2'
+services:
+  app:
+    build: .
+    container_name: 'node'
+    ports:
+      - '3000:3000'
+  nginx:
+    image: nginx
+    container_name: 'nginx'
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d:ro
+      - ./nginx/www:/var/www:ro
