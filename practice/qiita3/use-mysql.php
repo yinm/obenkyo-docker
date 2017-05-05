@@ -1,12 +1,12 @@
 <?php
 
-$dsn = 'mysql:host=' . $_ENV['MYSQL_PORT_3306_TCP_ADDR'];
+$dsn = 'mysql:host=' . $_ENV['DB_HOST'];
 $user = 'root';
-$password = $_ENV['MYSQL_ENV_MYSQL_ROOT_PASSWORD'];
+$password = $_ENV['DB_PASS'];
 
 $dbh = new PDO($dsn, $user, $password);
 
-$sql = "SELECT version();";
+$sql = "select database();";
 
 foreach ($dbh->query($sql, PDO::FETCH_ASSOC) as $row) {
     print_r($row);
