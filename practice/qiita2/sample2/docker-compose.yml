@@ -20,5 +20,7 @@ services:
   db:
     image: mysql:5.7
     container_name: mysql
+    volumes:
+      - ./.data/db:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root_pass
