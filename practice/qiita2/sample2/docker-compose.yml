@@ -5,6 +5,9 @@ services:
     container_name: php
     volumes:
       - ./application:/var/www/html
+    environment:
+      - DB_HOST=db
+      - DB_PASS=root_pass
 
   web:
     build: ./nginx
@@ -13,3 +16,9 @@ services:
       - '80:80'
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d:ro
+
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_pass
